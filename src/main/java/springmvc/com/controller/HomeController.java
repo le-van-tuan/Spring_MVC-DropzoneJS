@@ -1,5 +1,6 @@
 package springmvc.com.controller;
 
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import springmvc.com.model.ImageResponse;
 import springmvc.com.storage.ImageStorage;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +39,7 @@ public class HomeController {
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
-    public List<ImageResponse> uploadFile(MultipartHttpServletRequest request) {
+    public List<ImageResponse> uploadFile(MultipartHttpServletRequest request) throws IOException {
         Map<String, MultipartFile> fileMap = request.getFileMap();
         System.out.println("User has upload : " + fileMap.size() + " image(s)");
 
@@ -49,7 +51,7 @@ public class HomeController {
             String fileName = FilenameUtils.removeExtension(commonsMultipartFile.getFileItem().getName());
             String fileType = commonsMultipartFile.getContentType();
 
-            imageStorage.addImage(fileName, multipartFile);
+            imageStorage.addImage(fileName, Base64.encode(multipartFile.getBytes()));
 
             ImageResponse imageResponse = new ImageResponse();
             imageResponse.setName(fileName);

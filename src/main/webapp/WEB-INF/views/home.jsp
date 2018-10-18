@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,29 +46,14 @@
                      </div>
               </div>
                <div class="panel-body">
-                    <h4>Your Uploaded Images</h4>
-                    <img src="data:image/jpeg;base64,${image}" alt="..." width="200" height="200">
-                    <img src="data:image/jpg;base64,<c:out value='${bean.imageByteArrayString}'/>" />
-
-                    https://stackoverflow.com/questions/10066349/spring-display-image-on-jsp-file
-                    https://stackoverflow.com/questions/10510416/convert-base64-byte-array-to-an-image
-                    https://stackoverflow.com/questions/4112686/how-to-use-servlets-and-ajax
-
-                    http://api.jquery.com/serialize/
-
-                        <table>
-                                <c:forEach items="${products}" var="product">
-                                    <tr>
-                                        <td>${product.id}</td>
-                                        <td><c:out value="${product.name}" /></td>
-                                        <td><fmt:formatNumber value="${product.price}" type="currency" currencyCode="USD" /></td>
-                                    </tr>
-                                </c:forEach>
-                            </table>
-
-                       //TODO show the uploaded image here : using jstl foreach
-                       //TODO delete image here : using ajax and jquery (delete cache and delete html)
-               </div
+                   <c:if test="${not empty uploadedImages.images}">
+                       <c:forEach items="${uploadedImages.images}" var="value">
+                           <div style="width: 300px; height: 300px">
+                               <img src="data:image/jpg;base64,<c:out value='${value.value}'/>" style="height: 400px; width: 400px"/>
+                           </div>
+                       </c:forEach>
+                   </c:if>
+               </div>
        </div>
 
        <script type="text/javascript"
