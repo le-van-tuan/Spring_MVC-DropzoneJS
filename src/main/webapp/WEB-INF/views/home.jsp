@@ -18,7 +18,7 @@
        <div class="container">
               <div class="panel panel-default">
                      <div class="panel-heading text-center">
-                           <h3>Spring MVC Upload file Example</h3>
+                           <h3>Spring MVC Upload File Example</h3>
                      </div>
                      <div class="panel-body">
                            <div>
@@ -44,6 +44,11 @@
                            </div>
                      </div>
               </div>
+               <div class="panel-body">
+                    <h4>Your Uploaded Images</h4>
+                       //TODO show the uploaded image here : using jstl foreach
+                       //TODO delete image here : using ajax and jquery (delete cache and delete html)
+               </div
        </div>
 
        <script type="text/javascript"

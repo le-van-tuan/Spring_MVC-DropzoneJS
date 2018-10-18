@@ -1,19 +1,21 @@
 package springmvc.com.storage;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ImageStorage {
 
-    private static Map<String, byte[]> images = new HashMap<>();
+    private static Map<String, MultipartFile> images = new HashMap<>();
 
     /**
      *
      * @param name
-     * @param imageData
+     * @param multipartFile
      */
-    public void addImage(String name, byte[] imageData){
-        images.put(name, imageData);
+    public void addImage(String name, MultipartFile multipartFile){
+        images.put(name, multipartFile);
     }
 
     /**
@@ -28,7 +30,7 @@ public class ImageStorage {
      *
      * @return
      */
-    public Map<String, byte[]> getImages(){
+    public Map<String, MultipartFile> getImages(){
         return images;
     }
 }
