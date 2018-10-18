@@ -53,6 +53,8 @@
                     https://stackoverflow.com/questions/10510416/convert-base64-byte-array-to-an-image
                     https://stackoverflow.com/questions/4112686/how-to-use-servlets-and-ajax
 
+                    http://api.jquery.com/serialize/
+
                         <table>
                                 <c:forEach items="${products}" var="product">
                                     <tr>
